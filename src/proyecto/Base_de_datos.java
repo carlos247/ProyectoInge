@@ -13,15 +13,15 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-    /**
-     * @author Carlos
-     */
+/**
+ * @author Carlos
+ */
 public class Base_de_datos {
 
     /**
-     *@pre          año != NU
-     *@post         select = año
-     *@return       bus.dato 
+     * @pre año != NU
+     * @post select = año
+     * @return bus.dato
      */
     public String select() {
         Buscador bus = new Buscador();
@@ -29,20 +29,20 @@ public class Base_de_datos {
     }
 
     /**
-     *@pre          Accion en un boton 
-     *@return       bus.dato 
+     * @pre Accion en un boton
+     * @return bus.dato
      */
     public String parametro_switch() {
         Buscador bus = new Buscador();
         return bus.eleccion();
     }
-	
+
     /*
-    *<inv>          coneccion activa
-    *@pre           accion del usuario
-    *@post          rs = resultado de la consulta 
-    *@return        rs
-    */ 
+     *<inv>          coneccion activa
+     *@pre           accion del usuario
+     *@post          rs = resultado de la consulta 
+     *@return        rs
+     */
     public ResultSet Select() {
         ResultSet rs = null;
         PreparedStatement pstmt = null;
@@ -56,39 +56,35 @@ public class Base_de_datos {
         try {
             switch (parametro_switch()) {
                 case "por_anyo":
-                     System.out.println("estoy en el case del año y el select contiene " + select());
                     //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                     pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
+                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
                             + "FROM \"estudiantes\" WHERE \"fecha_graduacion\" = ?;");
                     pstmt.setString(1, select());
                     rs = pstmt.executeQuery();
                     break;
                 case "por_nombre":
-                     System.out.println("estoy en el case del nombre y el select contiene " + select());
-                   //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                     pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
+                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
+                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
                             + "FROM \"estudiantes\" WHERE \"nombre\" = ?;");
                     pstmt.setString(1, select());
                     rs = pstmt.executeQuery();
                     break;
-                    
+
                 case "por_info_base":
-                     System.out.println("estoy en el case de la base  y el select contiene " + select());
-                   //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                     pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
+                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
+                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
                             + "FROM \"estudiantes\";");
-                     rs = pstmt.executeQuery();
+                    rs = pstmt.executeQuery();
                     break;
-                    
+
                 case "base":
-                     System.out.println("estoy en el case de la base  y el select contiene " + select());
-                   //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                     pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
+                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
+                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
                             + "FROM \"estudiantes\";");
-                     rs = pstmt.executeQuery();
+                    rs = pstmt.executeQuery();
                     break;
             }
-            
+
         } catch (Exception e) {
             System.out.println("el select contiene un " + select());
             System.out.println("Problema al consultar la base de datos 1 ");
@@ -96,12 +92,12 @@ public class Base_de_datos {
         }
         return rs;
     }
-    
+
     /*
-    *@pre           rs.next != NULL
-    *@post          cadena += rs.getString(i) 
-    *@return        cadena
-    */ 
+     *@pre           rs.next != NULL
+     *@post          cadena += rs.getString(i) 
+     *@return        cadena
+     */
     public String dat() {
         Base_de_datos x = new Base_de_datos();
         ResultSet rs = null;
@@ -118,5 +114,11 @@ public class Base_de_datos {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
         return cadena;
+    }
+
+    public void resultado2() throws ClassNotFoundException {
+        Facebook FB = new Facebook("");
+        System.out.println("holi2");
+        FB.search(dat());
     }
 }
