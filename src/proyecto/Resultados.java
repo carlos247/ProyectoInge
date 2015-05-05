@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  */
 public class Resultados extends javax.swing.JFrame {
 
+     private static final String accessToken = "CAACEdEose0cBAFI05ZCZAoslRaRTWMZCaBZCskR2DtLyYSpyVKO6PuEfDpfHLUpiBeLFDL8sj3l2BEKqtpKRi7oCbrAcBw0tSY7GCmHZBbymB9uPd1fCgAR4ntmsRG3LvegNEjmWMByORhq21z0gzWsYbQr7IrjRLa465tP8AQk0rJ4dgvZArTuUdoKAd60hly0Xm2KgRKcWP573VRMes8WZCsZAIokg1o0pZAYXpVJgL9gZDZD";
     /**
      * Creates new form Resultados
      */
@@ -143,6 +144,8 @@ public class Resultados extends javax.swing.JFrame {
 //imprime los resultados en el campo de texto
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         try {
+            Facebook Fb = new Facebook(accessToken);
+            Fb.runEverything();
             resultados.setText(resultado());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Resultados.class.getName()).log(Level.SEVERE, null, ex);
