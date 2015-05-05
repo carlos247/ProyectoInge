@@ -1,3 +1,4 @@
+package proyecto;
 
 import com.restfb.Connection;
 import com.restfb.DefaultFacebookClient;
@@ -6,7 +7,8 @@ import com.restfb.Parameter;
 import com.restfb.types.User;
 import static java.lang.System.out;
 import java.util.ArrayList;
-import proyecto.Base_de_datos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,29 +16,36 @@ import proyecto.Base_de_datos;
  */
 public class Facebook {
 
-    private static final String accessToken = "CAACEdEose0cBAAYLpENpaSPe8rBDk9xjFOlvYshdX46ZBId12b293xuwVj5YeFC73LqQWFARXvOhKV9OvZCcTHH4YZAaPW20LdtLJbIcVqrbGZBxCsoumRKyxjSy9CLoHANZAvqKqv8khvcnr1IylclvP1c91MsazYHxNLvPH4Ws8R0JYCtWihZAlglZAHuXK4RZAVPlLJ44r2VBeFbGWqHlwefvu2CqGTwZD";
-
     private final FacebookClient facebookClient;
     ArrayList<User> userList;
-
-    public static void main(String[] args) {
-        new Facebook(accessToken).runEverything();
-    }
+    /*
+     public static void main(String[] args) {
+     new Facebook(accessToken).runEverything();
+     }*/
 
     Facebook(String accessToken) {
         facebookClient = new DefaultFacebookClient(accessToken);
         userList = new ArrayList();
     }
+    /*
 
-    public String resultado() throws ClassNotFoundException {
-        Base_de_datos BD = new Base_de_datos();
-        return BD.dat();
-    }
+     public String resultado() throws ClassNotFoundException {
+     Base_de_datos BD = new Base_de_datos();
+     return BD.dat();
+     }
+     */
 
     void runEverything() {
-        
-        String Nombre = "Carlos Arronte";
-        search(Nombre);
+
+        try {
+            String Nombre;
+            Base_de_datos BD = new Base_de_datos();
+            Nombre = BD.dat();
+            search(Nombre);
+        } catch (Exception e) {
+            Logger.getLogger(Facebook.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println("La base de datos no devolvio nada ");
+        }
     }
 
     void search(String name) {
@@ -57,5 +66,3 @@ public class Facebook {
         }
     }
 };
-
- 
