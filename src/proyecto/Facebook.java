@@ -18,22 +18,14 @@ public class Facebook {
 
     private final FacebookClient facebookClient;
     ArrayList<User> userList;
-    /*
-     public static void main(String[] args) {
-     new Facebook(accessToken).runEverything();
-     }*/
+
 
     Facebook(String accessToken) {
         facebookClient = new DefaultFacebookClient(accessToken);
         userList = new ArrayList();
     }
-    /*
-
-     public String resultado() throws ClassNotFoundException {
-     Base_de_datos BD = new Base_de_datos();
-     return BD.dat();
-     }
-     */
+  
+    
 
     void runEverything() {
 
