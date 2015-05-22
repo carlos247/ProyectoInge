@@ -107,29 +107,34 @@ public class Buscador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(busqueda_manual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buscar_por_año)
-                        .addGap(30, 30, 30))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscar_graduados_años)
-                            .addComponent(buscar_con_nombre_completo)
-                            .addComponent(buscar_con_la_info_de_la_base))
-                        .addGap(0, 94, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(busqueda_manual)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buscar_por_año))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buscar_graduados_años)
+                                    .addComponent(buscar_con_la_info_de_la_base)
+                                    .addComponent(buscar_con_nombre_completo))
+                                .addGap(0, 116, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(bucar_nombre)
+                                .addGap(30, 30, 30)
+                                .addComponent(Salir))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(Buscar_info_base, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bucar_nombre)
-                        .addGap(30, 30, 30)
-                        .addComponent(Salir))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nombre_estu, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(años, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Buscar_info_base, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombre_estu, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(años, javax.swing.GroupLayout.Alignment.TRAILING, 0, 107, Short.MAX_VALUE))))
                 .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addGap(136, 136, 136)
@@ -144,19 +149,19 @@ public class Buscador extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buscar_con_nombre_completo)
+                            .addComponent(nombre_estu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buscar_graduados_años)
                             .addComponent(años, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addComponent(buscar_con_la_info_de_la_base))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(Buscar_info_base)))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscar_con_nombre_completo)
-                    .addComponent(nombre_estu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buscar_con_la_info_de_la_base)
+                            .addComponent(Buscar_info_base))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Salir)
                     .addComponent(bucar_nombre)
@@ -170,8 +175,9 @@ public class Buscador extends javax.swing.JFrame {
 
     // variables globales para el anyo devuelto por el usuario y variable global para garantizar que la seleccion sera por anyo
     public static class Global {
+
         public static String dato;
-        public static String eleccion2 = null;
+        public static String eleccion_para_switch = null;
     }
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
@@ -182,7 +188,7 @@ public class Buscador extends javax.swing.JFrame {
         resul.setVisible(true);
         setVisible(false);
         dispose();
-        Global.eleccion2 = "por_anyo";
+        Global.eleccion_para_switch = "por_anyo";
         Global.dato = this.años.getSelectedItem().toString();
     }//GEN-LAST:event_buscar_por_añoActionPerformed
 
@@ -191,7 +197,7 @@ public class Buscador extends javax.swing.JFrame {
         resul.setVisible(true);
         setVisible(false);
         dispose();
-        Global.eleccion2 = "por_nombre";
+        Global.eleccion_para_switch = "por_nombre";
         Global.dato = nombre_estu.getText();
     }//GEN-LAST:event_bucar_nombreActionPerformed
 
@@ -200,7 +206,7 @@ public class Buscador extends javax.swing.JFrame {
         resul.setVisible(true);
         setVisible(false);
         dispose();
-        Global.eleccion2 = "por_info_base";
+        Global.eleccion_para_switch = "por_info_base";
     }//GEN-LAST:event_Buscar_info_baseActionPerformed
 
     private void busqueda_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busqueda_manualActionPerformed
@@ -211,8 +217,8 @@ public class Buscador extends javax.swing.JFrame {
     }//GEN-LAST:event_busqueda_manualActionPerformed
 
     //guarda la seleccion de parametro que hizo el usuario para la busqueda
-    public String eleccion() {
-        return Global.eleccion2;
+    public String eleccion_para_switch() {
+        return Global.eleccion_para_switch;
     }
 
     // guarda el parametro que hizo el usuario para la busqueda
