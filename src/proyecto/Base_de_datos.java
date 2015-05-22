@@ -34,7 +34,8 @@ public class Base_de_datos {
      */
     public String parametro_switch() {
         Buscador bus = new Buscador();
-        return bus.eleccion();
+        //System.out.println(bus.eleccion_para_switch());
+        return bus.eleccion_para_switch();
     }
 
     /*
@@ -83,6 +84,16 @@ public class Base_de_datos {
                             + "FROM \"estudiantes\";");
                     rs = pstmt.executeQuery();
                     break;
+
+                case "con_email":
+                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
+                    //  pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\", \"correo_electronico\""
+                    //        + "FROM \"estudiantes\";");
+                    pstmt = conn.prepareStatement("SELECT \"correo_electronico\""
+                            + "FROM \"estudiantes\";");
+                    rs = pstmt.executeQuery();
+                    //    System.out.println(parametro_switch() );
+                    break;
             }
 
         } catch (Exception e) {
@@ -104,21 +115,40 @@ public class Base_de_datos {
         String cadena = "";
         rs = x.Select();
         try {
-            while (rs.next()) {
-                //imprimimos todos los datos contenidos en la tabla
-                cadena += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "\n";
+            if ("con_email".equals(parametro_switch())) {
+                while (rs.next()) {
+                    //imprimimos todos los datos contenidos en la tabla
+                    cadena += rs.getString(1);
+                }
+            } else {
+                while (rs.next()) {
+                    //imprimimos todos los datos contenidos en la tabla
+                    cadena += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "\n";
 
+                }
             }
         } catch (Exception e) {
             System.out.println("Problema al imprimir la base de datos ");
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
         return cadena;
-    }
 
-    public void resultado2() throws ClassNotFoundException {
+    }
+    /*
+     public void resultadoParaCorreo() throws ClassNotFoundException {
+     
+     String destino = Correo.destino;
+     String asunto = Correo.asunto;
+     String mensaje = Correo.mensaje;
+     String archivo = Correo.archivo;
+     Correo.EnviarCorreo(destino, asunto, mensaje, archivo);
+     System.out.println("reholi");
+     }
+     */
+
+    public void resultadoParaFacebook() throws ClassNotFoundException {
         Facebook FB = new Facebook("");
-        System.out.println("holi2");
         FB.search(dat());
     }
+
 }
