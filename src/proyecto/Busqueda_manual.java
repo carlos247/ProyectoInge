@@ -36,6 +36,7 @@ public class Busqueda_manual extends javax.swing.JFrame {
         cargar_info = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultados_posi = new javax.swing.JTextArea();
+        Enviar_correos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class Busqueda_manual extends javax.swing.JFrame {
         resultados_posi.setRows(5);
         jScrollPane1.setViewportView(resultados_posi);
 
+        Enviar_correos.setText("Enviar Correos");
+        Enviar_correos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Enviar_correosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,16 +86,18 @@ public class Busqueda_manual extends javax.swing.JFrame {
                         .addComponent(busqueda_manual))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Enviar_correos)
+                                .addGap(18, 18, 18)
+                                .addComponent(cargar_info)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(atras)
+                                .addGap(44, 44, 44)
+                                .addComponent(salir)
+                                .addGap(9, 9, 9))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cargar_info)
-                .addGap(44, 44, 44)
-                .addComponent(atras)
-                .addGap(44, 44, 44)
-                .addComponent(salir)
-                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,14 +110,15 @@ public class Busqueda_manual extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salir)
                     .addComponent(atras)
-                    .addComponent(cargar_info))
+                    .addComponent(cargar_info)
+                    .addComponent(Enviar_correos))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-       
+
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
@@ -120,19 +131,26 @@ public class Busqueda_manual extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasActionPerformed
 
     private void cargar_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_infoActionPerformed
-        Buscador.Global.eleccion2 = "base";
         try {
+            System.out.println(resultado());
             resultados_posi.setText(resultado());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Resultados.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Problema al imprimir datos");
+
+        } catch (Exception e) {
+            System.out.println("Problema al imprimir datos" + e);
         }
     }//GEN-LAST:event_cargar_infoActionPerformed
 
-     public String eleccion() {
-        return Buscador.Global.eleccion2;
+    private void Enviar_correosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Enviar_correosActionPerformed
+        Buscador.Global.eleccion_para_switch = "con_email";// por alguna razon no le da la gana de funcionar 
+        Correo C = new Correo();
+        C.conexion();
+        C.iniciarSesion();  
+    }//GEN-LAST:event_Enviar_correosActionPerformed
+
+    public String eleccion() {
+        return Buscador.Global.eleccion_para_switch;
     }
-     
+
 //recive la cadena con los resultados
     public String resultado() throws ClassNotFoundException {
         Base_de_datos BD = new Base_de_datos();
@@ -141,39 +159,10 @@ public class Busqueda_manual extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Busqueda_manual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Busqueda_manual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Busqueda_manual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Busqueda_manual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Busqueda_manual().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Enviar_correos;
     private javax.swing.JButton atras;
     private javax.swing.JLabel busqueda_manual;
     private javax.swing.JButton cargar_info;
