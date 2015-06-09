@@ -12,20 +12,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 
 /**
  * @author Carlos
  */
 public class Base_de_datos {
-
+        ArrayList<String> cadena;
     /**
      * @pre año != NU
      * @post select = año
      * @return bus.dato
      */
     public String select() {
-        Buscador bus = new Buscador();
-        return bus.dato();
+        Busqueda_auto B_A = new Busqueda_auto();
+        return B_A.dato();
     }
 
     /**
@@ -33,9 +34,8 @@ public class Base_de_datos {
      * @return bus.dato
      */
     public String parametro_switch() {
-        Buscador bus = new Buscador();
-        //System.out.println(bus.eleccion_para_switch());
-        return bus.eleccion_para_switch();
+        Busqueda_auto B_A = new Busqueda_auto();// el switch del correo es de busqueda manual 
+        return B_A.eleccion_para_switch();
     }
 
     /*
@@ -63,37 +63,20 @@ public class Base_de_datos {
                     pstmt.setString(1, select());
                     rs = pstmt.executeQuery();
                     break;
-                case "por_nombre":
-                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
-                            + "FROM \"estudiantes\" WHERE \"nombre\" = ?;");
-                    pstmt.setString(1, select());
-                    rs = pstmt.executeQuery();
-                    break;
-
                 case "por_info_base":
                     //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
                     pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
                             + "FROM \"estudiantes\";");
                     rs = pstmt.executeQuery();
                     break;
-
-                case "base":
-                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                    pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\""
-                            + "FROM \"estudiantes\";");
-                    rs = pstmt.executeQuery();
-                    break;
-
                 case "con_email":
-                    //seleccionamos la tabla de la base de datos la cual lleva por nombre estudiante
-                    //  pstmt = conn.prepareStatement("SELECT \"nombre\", \"primer_apellido\", \"segundo_apellido\", \"correo_electronico\""
-                    //        + "FROM \"estudiantes\";");
                     pstmt = conn.prepareStatement("SELECT \"correo_electronico\""
                             + "FROM \"estudiantes\";");
                     rs = pstmt.executeQuery();
-                    //    System.out.println(parametro_switch() );
                     break;
+                    
+                default:
+                     System.out.println("Default  " + select());   
             }
 
         } catch (Exception e) {
@@ -109,22 +92,22 @@ public class Base_de_datos {
      *@post          cadena += rs.getString(i) 
      *@return        cadena
      */
-    public String dat() {
+    public ArrayList<String> dat() {
         Base_de_datos x = new Base_de_datos();
         ResultSet rs = null;
-        String cadena = "";
+        cadena = new ArrayList();
         rs = x.Select();
         try {
             if ("con_email".equals(parametro_switch())) {
                 while (rs.next()) {
                     //imprimimos todos los datos contenidos en la tabla
-                    cadena += rs.getString(1);
+                    cadena.add(rs.getString(1));
                 }
             } else {
                 while (rs.next()) {
                     //imprimimos todos los datos contenidos en la tabla
-                    cadena += rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + "\n";
-
+                    cadena.add(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+                    
                 }
             }
         } catch (Exception e) {
@@ -134,21 +117,4 @@ public class Base_de_datos {
         return cadena;
 
     }
-    /*
-     public void resultadoParaCorreo() throws ClassNotFoundException {
-     
-     String destino = Correo.destino;
-     String asunto = Correo.asunto;
-     String mensaje = Correo.mensaje;
-     String archivo = Correo.archivo;
-     Correo.EnviarCorreo(destino, asunto, mensaje, archivo);
-     System.out.println("reholi");
-     }
-     */
-
-    public void resultadoParaFacebook() throws ClassNotFoundException {
-        Facebook FB = new Facebook("");
-        FB.search(dat());
-    }
-
 }
