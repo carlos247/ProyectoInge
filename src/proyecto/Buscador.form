@@ -50,122 +50,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="busqueda_manual" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="buscar_por_año" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="buscar_graduados_años" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="buscar_con_la_info_de_la_base" min="-2" max="-2" attributes="0"/>
-                                  <Component id="buscar_con_nombre_completo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="116" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="bucar_nombre" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="Salir" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="Buscar_info_base" min="-2" pref="107" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="nombre_estu" alignment="1" max="32767" attributes="0"/>
-                          <Component id="años" alignment="1" pref="107" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-              <Component id="buscador_de_egresados_de_la_ECCI" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="auto" max="32767" attributes="0"/>
+                  <Component id="manual" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="113" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="Salir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="buscador_de_egresados_de_la_ECCI" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buscar_con_nombre_completo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nombre_estu" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buscar_graduados_años" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="años" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buscar_con_la_info_de_la_base" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Buscar_info_base" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace pref="54" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Salir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bucar_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buscar_por_año" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="busqueda_manual" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+              <Component id="auto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="manual" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Salir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="buscador_de_egresados_de_la_ECCI">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscador de egresados de la ECCI"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="buscar_graduados_a&#xf1;os">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar graduados por a&#xf1;o"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="buscar_con_la_info_de_la_base">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar con los datos de la base "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="buscar_con_nombre_completo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar por nombre completo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Buscar_info_base">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar_info_baseActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="Salir">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -181,63 +95,20 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="bucar_nombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar por nombre "/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bucar_nombreActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="buscar_por_a&#xf1;o">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar por a&#xf1;o "/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscar_por_a&#xf1;oActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="a&#xf1;os">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="22">
-            <StringItem index="0" value="Seleccione a&#xf1;o"/>
-            <StringItem index="1" value="2000"/>
-            <StringItem index="2" value="2001"/>
-            <StringItem index="3" value="2002"/>
-            <StringItem index="4" value="2003"/>
-            <StringItem index="5" value="2004"/>
-            <StringItem index="6" value="2005"/>
-            <StringItem index="7" value="2006"/>
-            <StringItem index="8" value="2007"/>
-            <StringItem index="9" value="2008"/>
-            <StringItem index="10" value="2009"/>
-            <StringItem index="11" value="2010"/>
-            <StringItem index="12" value="2011"/>
-            <StringItem index="13" value="2012"/>
-            <StringItem index="14" value="2013"/>
-            <StringItem index="15" value="2014"/>
-            <StringItem index="16" value="2015"/>
-            <StringItem index="17" value="2016"/>
-            <StringItem index="18" value="2017"/>
-            <StringItem index="19" value="2018"/>
-            <StringItem index="20" value="2019"/>
-            <StringItem index="21" value="2020"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nombre_estu">
-    </Component>
-    <Component class="javax.swing.JButton" name="busqueda_manual">
+    <Component class="javax.swing.JButton" name="manual">
       <Properties>
         <Property name="text" type="java.lang.String" value="Busqueda manual"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="busqueda_manualActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manualActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="auto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Busqueda automatica"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="autoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

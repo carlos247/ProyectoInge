@@ -16,7 +16,11 @@ public class Buscador extends javax.swing.JFrame {
      */
     public Buscador() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Buscador de egresados de la ECCI");
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,17 +36,9 @@ public class Buscador extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jToggleButton1 = new javax.swing.JToggleButton();
-        buscador_de_egresados_de_la_ECCI = new javax.swing.JLabel();
-        buscar_graduados_años = new javax.swing.JLabel();
-        buscar_con_la_info_de_la_base = new javax.swing.JLabel();
-        buscar_con_nombre_completo = new javax.swing.JLabel();
-        Buscar_info_base = new javax.swing.JButton();
         javax.swing.JButton Salir = new javax.swing.JButton();
-        bucar_nombre = new javax.swing.JButton();
-        buscar_por_año = new javax.swing.JButton();
-        años = new javax.swing.JComboBox();
-        nombre_estu = new javax.swing.JTextField();
-        busqueda_manual = new javax.swing.JButton();
+        manual = new javax.swing.JButton();
+        auto = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -56,21 +52,6 @@ public class Buscador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buscador_de_egresados_de_la_ECCI.setText("Buscador de egresados de la ECCI");
-
-        buscar_graduados_años.setText("Buscar graduados por año");
-
-        buscar_con_la_info_de_la_base.setText("Buscar con los datos de la base ");
-
-        buscar_con_nombre_completo.setText("Buscar por nombre completo");
-
-        Buscar_info_base.setText("Buscar");
-        Buscar_info_base.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar_info_baseActionPerformed(evt);
-            }
-        });
-
         Salir.setForeground(new java.awt.Color(255, 0, 0));
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -79,26 +60,17 @@ public class Buscador extends javax.swing.JFrame {
             }
         });
 
-        bucar_nombre.setText("Buscar por nombre ");
-        bucar_nombre.addActionListener(new java.awt.event.ActionListener() {
+        manual.setText("Busqueda manual");
+        manual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bucar_nombreActionPerformed(evt);
+                manualActionPerformed(evt);
             }
         });
 
-        buscar_por_año.setText("Buscar por año ");
-        buscar_por_año.addActionListener(new java.awt.event.ActionListener() {
+        auto.setText("Busqueda automatica");
+        auto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscar_por_añoActionPerformed(evt);
-            }
-        });
-
-        años.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione año", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020" }));
-
-        busqueda_manual.setText("Busqueda manual");
-        busqueda_manual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busqueda_manualActionPerformed(evt);
+                autoActionPerformed(evt);
             }
         });
 
@@ -106,125 +78,51 @@ public class Buscador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(busqueda_manual)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buscar_por_año))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buscar_graduados_años)
-                                    .addComponent(buscar_con_la_info_de_la_base)
-                                    .addComponent(buscar_con_nombre_completo))
-                                .addGap(0, 116, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(bucar_nombre)
-                                .addGap(30, 30, 30)
-                                .addComponent(Salir))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(Buscar_info_base, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nombre_estu, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(años, javax.swing.GroupLayout.Alignment.TRAILING, 0, 107, Short.MAX_VALUE))))
-                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(buscador_de_egresados_de_la_ECCI)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(auto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscador_de_egresados_de_la_ECCI)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buscar_con_nombre_completo)
-                            .addComponent(nombre_estu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buscar_graduados_años)
-                            .addComponent(años, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buscar_con_la_info_de_la_base)
-                            .addComponent(Buscar_info_base))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salir)
-                    .addComponent(bucar_nombre)
-                    .addComponent(buscar_por_año)
-                    .addComponent(busqueda_manual))
-                .addGap(28, 28, 28))
+                .addGap(65, 65, 65)
+                .addComponent(auto)
+                .addGap(33, 33, 33)
+                .addComponent(manual)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Salir)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // variables globales para el anyo devuelto por el usuario y variable global para garantizar que la seleccion sera por anyo
-    public static class Global {
 
-        public static String dato;
-        public static String eleccion_para_switch = null;
-    }
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
-    private void buscar_por_añoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_por_añoActionPerformed
-        Resultados resul = new Resultados();
-        resul.setVisible(true);
-        setVisible(false);
-        dispose();
-        Global.eleccion_para_switch = "por_anyo";
-        Global.dato = this.años.getSelectedItem().toString();
-    }//GEN-LAST:event_buscar_por_añoActionPerformed
-
-    private void bucar_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucar_nombreActionPerformed
-        Resultados resul = new Resultados();
-        resul.setVisible(true);
-        setVisible(false);
-        dispose();
-        Global.eleccion_para_switch = "por_nombre";
-        Global.dato = nombre_estu.getText();
-    }//GEN-LAST:event_bucar_nombreActionPerformed
-
-    private void Buscar_info_baseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_info_baseActionPerformed
-        Resultados resul = new Resultados();
-        resul.setVisible(true);
-        setVisible(false);
-        dispose();
-        Global.eleccion_para_switch = "por_info_base";
-    }//GEN-LAST:event_Buscar_info_baseActionPerformed
-
-    private void busqueda_manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busqueda_manualActionPerformed
+    private void manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualActionPerformed
         Busqueda_manual B_M = new Busqueda_manual();
         B_M.setVisible(true);
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_busqueda_manualActionPerformed
+    }//GEN-LAST:event_manualActionPerformed
 
-    //guarda la seleccion de parametro que hizo el usuario para la busqueda
-    public String eleccion_para_switch() {
-        return Global.eleccion_para_switch;
-    }
-
-    // guarda el parametro que hizo el usuario para la busqueda
-    public String dato() {
-        return Global.dato;
-    }
+    private void autoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoActionPerformed
+        Busqueda_auto B_A = new Busqueda_auto();
+        B_A.setVisible(true);
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_autoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,20 +160,12 @@ public class Buscador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar_info_base;
-    private javax.swing.JComboBox años;
-    private javax.swing.JButton bucar_nombre;
-    private javax.swing.JLabel buscador_de_egresados_de_la_ECCI;
-    private javax.swing.JLabel buscar_con_la_info_de_la_base;
-    private javax.swing.JLabel buscar_con_nombre_completo;
-    private javax.swing.JLabel buscar_graduados_años;
-    public javax.swing.JButton buscar_por_año;
-    private javax.swing.JButton busqueda_manual;
+    private javax.swing.JButton auto;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTextField nombre_estu;
+    private javax.swing.JButton manual;
     // End of variables declaration//GEN-END:variables
 }
