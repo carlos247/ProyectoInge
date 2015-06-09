@@ -7,6 +7,7 @@ package proyecto;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,10 +18,21 @@ public class Busqueda_manual extends javax.swing.JFrame {
     /**
      * Creates new form Busqueda_manual
      */
+   BuscadorF buscadorf = new BuscadorF();
+    /**
+     * Creates new form ventanaBuscador
+     */
     public Busqueda_manual() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Buscador Manual");
     }
+    public static class Global {
 
+        public static String dato;
+        public static String eleccion_para_switch = null;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,17 +42,24 @@ public class Busqueda_manual extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        busqueda_manual = new javax.swing.JLabel();
         salir = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-        cargar_info = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        resultados_posi = new javax.swing.JTextArea();
         Enviar_correos = new javax.swing.JButton();
+        nomComp = new javax.swing.JLabel();
+        correo = new javax.swing.JLabel();
+        fechaNac = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JTextField();
+        correoTexto = new javax.swing.JTextField();
+        nacTexto = new javax.swing.JTextField();
+        ubiTexto = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultados = new javax.swing.JTextArea();
+        botonBuscar = new javax.swing.JButton();
+        agregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        busqueda_manual.setText("Busqueda manual ");
 
         salir.setForeground(new java.awt.Color(255, 0, 0));
         salir.setText("Salir");
@@ -57,21 +76,44 @@ public class Busqueda_manual extends javax.swing.JFrame {
             }
         });
 
-        cargar_info.setText("Cargar Informacion");
-        cargar_info.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargar_infoActionPerformed(evt);
-            }
-        });
-
-        resultados_posi.setColumns(20);
-        resultados_posi.setRows(5);
-        jScrollPane1.setViewportView(resultados_posi);
-
         Enviar_correos.setText("Enviar Correos");
         Enviar_correos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Enviar_correosActionPerformed(evt);
+            }
+        });
+
+        nomComp.setText("Nombre completo");
+
+        correo.setText("Correo electronico");
+
+        fechaNac.setText("Fecha de nacimiento");
+
+        jLabel5.setText("Ubicacion");
+
+        textoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Posibles Egresados");
+
+        resultados.setColumns(20);
+        resultados.setRows(5);
+        jScrollPane1.setViewportView(resultados);
+
+        botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
+
+        agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
             }
         });
 
@@ -80,39 +122,69 @@ public class Busqueda_manual extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(busqueda_manual))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Enviar_correos)
-                                .addGap(18, 18, 18)
-                                .addComponent(cargar_info)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(atras)
-                                .addGap(44, 44, 44)
-                                .addComponent(salir)
-                                .addGap(9, 9, 9))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nomComp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fechaNac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(correo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(correoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textoNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nacTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ubiTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salir)
+                    .addComponent(agregar)
+                    .addComponent(botonBuscar)
+                    .addComponent(Enviar_correos)
+                    .addComponent(atras))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(busqueda_manual)
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salir)
-                    .addComponent(atras)
-                    .addComponent(cargar_info)
-                    .addComponent(Enviar_correos))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nomComp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonBuscar)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(correoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(agregar))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nacTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Enviar_correos)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ubiTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(salir)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(atras)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -130,29 +202,48 @@ public class Busqueda_manual extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_atrasActionPerformed
 
-    private void cargar_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargar_infoActionPerformed
-        try {
-            System.out.println(resultado());
-            resultados_posi.setText(resultado());
-
-        } catch (Exception e) {
-            System.out.println("Problema al imprimir datos" + e);
-        }
-    }//GEN-LAST:event_cargar_infoActionPerformed
-
     private void Enviar_correosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Enviar_correosActionPerformed
-        Buscador.Global.eleccion_para_switch = "con_email";// por alguna razon no le da la gana de funcionar 
+        Global.eleccion_para_switch = "con_email";
         Correo C = new Correo();
         C.conexion();
         C.iniciarSesion();  
     }//GEN-LAST:event_Enviar_correosActionPerformed
 
+    private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoNombreActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        this.resultados.setText("");
+        String nombre = this.textoNombre.getText();
+        buscadorf.buscar(nombre);
+        if(this.correoTexto.getText().length() != 0){
+            buscadorf.buscarEmail(this.correoTexto.getText());
+        }
+        if(this.nacTexto.getText().length() != 0){
+            System.out.println("Entro");
+            buscadorf.buscarBirthday(this.nacTexto.getText());
+        }
+        if(this.ubiTexto.getText().length() != 0){
+            buscadorf.buscarLocation(this.ubiTexto.getText());
+        }
+        ArrayList<String> usuario = buscadorf.getResultado();
+        for(int i = 0; i < usuario.size();i++){
+            this.resultados.append(usuario.get(i)+ "\n");
+        }
+             
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarActionPerformed
+
     public String eleccion() {
-        return Buscador.Global.eleccion_para_switch;
+        return Global.eleccion_para_switch;
     }
 
 //recive la cadena con los resultados
-    public String resultado() throws ClassNotFoundException {
+    public ArrayList<String> resultado() throws ClassNotFoundException {
         Base_de_datos BD = new Base_de_datos();
         return BD.dat();
     }
@@ -163,11 +254,20 @@ public class Busqueda_manual extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enviar_correos;
+    private javax.swing.JButton agregar;
     private javax.swing.JButton atras;
-    private javax.swing.JLabel busqueda_manual;
-    private javax.swing.JButton cargar_info;
+    private javax.swing.JButton botonBuscar;
+    private javax.swing.JLabel correo;
+    private javax.swing.JTextField correoTexto;
+    private javax.swing.JLabel fechaNac;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea resultados_posi;
+    private javax.swing.JTextField nacTexto;
+    private javax.swing.JLabel nomComp;
+    private javax.swing.JTextArea resultados;
     private javax.swing.JButton salir;
+    private javax.swing.JTextField textoNombre;
+    private javax.swing.JTextField ubiTexto;
     // End of variables declaration//GEN-END:variables
 }
